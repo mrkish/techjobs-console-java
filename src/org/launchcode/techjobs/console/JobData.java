@@ -84,6 +84,17 @@ public class JobData {
         return jobs;
     }
 
+    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+
+        // load data
+        loadData();
+
+
+
+        ArrayList<HashMap<String, String>> results;
+        return results;
+    }
+
     /**
      * Read in data from a CSV file and store it in a list
      */
@@ -124,5 +135,4 @@ public class JobData {
             e.printStackTrace();
         }
     }
-
 }
