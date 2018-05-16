@@ -51,6 +51,8 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
+        //ArrayList<HashMap<String, String>, String>> clonedData = new ArrayList<>();
+
         return allJobs;
     }
 
@@ -84,15 +86,30 @@ public class JobData {
         return jobs;
     }
 
-    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+    public static ArrayList<HashMap<String, String>> findByValue(String query) {
 
-        // load data
         loadData();
 
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        String lowerCaseQuery = query.toLowerCase();
 
+        for(HashMap<String, String> row : allJobs) {
 
-        ArrayList<HashMap<String, String>> results;
-        return results;
+            /* We want to iterate through the entire HashMap for the search term.
+            if the term appears once, in any value, we'll add the entire row to the jobs ArrayList.
+             */
+
+            for(String key : row.keySet()) {
+                String aValue = row.get(key).toLowerCase();
+
+                if (aValue.contains(lowerCaseQuery)) {
+                    jobs.add(row);
+                    break;
+                }
+            }
+        }
+
+        return jobs;
     }
 
     /**
