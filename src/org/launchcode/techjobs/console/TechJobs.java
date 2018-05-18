@@ -1,6 +1,7 @@
 package org.launchcode.techjobs.console;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -42,6 +43,7 @@ public class TechJobs {
                 } else {
 
                     ArrayList<String> results = JobData.findAll(columnChoice);
+                    results.sort(Comparator.naturalOrder());
 
                     System.out.println("\n*** All " + columnChoices.get(columnChoice) + " Values ***");
 
